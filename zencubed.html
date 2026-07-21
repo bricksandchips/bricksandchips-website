@@ -95,7 +95,6 @@
       text-align: center;
     }
 
-
     .hero h1 {
       font-size: clamp(2.6rem, 7vw, 4.8rem);
       font-weight: 800;
@@ -147,12 +146,55 @@
       position: relative;
     }
 
-    .phone-frame iframe {
+    .phone-thumb {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      border: none;
+      display: block;
+      text-decoration: none;
+    }
+
+    .phone-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn span {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .phone-thumb:hover .play-btn span,
+    .phone-thumb:active .play-btn span {
+      background: rgba(255, 255, 255, 0.28);
+      transform: scale(1.08);
+    }
+
+    .play-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      margin-left: 3px;
     }
 
     /* ── BENEFITS ── */
@@ -176,6 +218,21 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 540px) {
+      .nav-stores { display: none; }
+
+      .hero {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+      }
+
+      .badge-apple  img { height: 40px; }
+      .badge-google img { height: 40px; margin: 0; }
+
+      .store-badges { gap: 0.75rem; }
     }
 
     @media (max-width: 640px) {
@@ -278,12 +335,14 @@
 <!-- VIDEO -->
 <section class="video-section">
   <div class="phone-frame">
-    <iframe
-      src="https://www.youtube.com/embed/jvRpPNN4MLc?rel=0&playsinline=1&color=white"
-      title="ZenCubed — gameplay"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-    ></iframe>
+    <a class="phone-thumb" href="https://www.youtube.com/shorts/jvRpPNN4MLc" target="_blank" rel="noopener" aria-label="Watch ZenCubed gameplay on YouTube">
+      <img src="https://img.youtube.com/vi/jvRpPNN4MLc/maxresdefault.jpg" alt="ZenCubed gameplay preview">
+      <div class="play-btn">
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -344,5 +403,21 @@
   <p class="footer-copy">© 2026 Bricks and Chips, LLC</p>
 </footer>
 
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    var isAndroid = /android/i.test(ua);
+    var isIOS = /iphone|ipad|ipod/i.test(ua);
+    if (!isAndroid && !isIOS) return;
+    document.querySelectorAll('.store-badges').forEach(function (row) {
+      var apple  = row.querySelector('.badge-apple');
+      var google = row.querySelector('.badge-google');
+      if (!apple || !google) return;
+      if (isAndroid) {
+        row.insertBefore(google, apple);
+      }
+    });
+  })();
+</script>
 </body>
 </html>
