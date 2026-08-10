@@ -161,6 +161,31 @@
       line-height: 1.55;
     }
 
+    /* ── SCREENSHOT ── */
+    .screenshot-section {
+      padding: 3rem 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-frame {
+      width: min(300px, 82vw);
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        0 0 0 1px rgba(124, 108, 240, 0.15),
+        0 0 60px var(--accent-glow),
+        0 40px 80px rgba(0, 0, 0, 0.55);
+      background: #000;
+    }
+
+    .phone-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 540px) {
       .hero {
@@ -217,7 +242,13 @@
   <h1>Find the minimum.</h1>
   <p>A puzzle backed by math with proven solutions.</p>
   <!-- TODO once live: add App Store / Google Play download badges here, matching zencubed.html -->
-  <!-- TODO once available: add gameplay preview video/screenshot here, matching zencubed.html -->
+</section>
+
+<!-- SCREENSHOT -->
+<section class="screenshot-section">
+  <div class="phone-frame">
+    <img src="./assets/opening-screen.png" alt="Junction Nine opening screen">
+  </div>
 </section>
 
 <!-- BENEFITS -->
@@ -252,7 +283,7 @@
         <line x1="22" y1="25" x2="22" y2="29"/>
       </svg>
       <h3>Make the connections</h3>
-      <p>Make every line flow.<br>A spin can solve one area but disrupt another.</p>
+      <p>Make every line flow.<br>A spin can solve one area but<br>disrupt another.</p>
     </div>
 
     <div class="benefit-card">
