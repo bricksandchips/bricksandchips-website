@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junction Nine</title>
+  <meta name="description" content="A puzzle backed by math.">
+  <meta property="og:title" content="Junction Nine">
+  <meta property="og:description" content="A puzzle backed by math.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Junction Nine">
+  <meta name="twitter:description" content="A puzzle backed by math.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0c0d1a;
+      --surface:     #14162a;
+      --border:      rgba(255, 255, 255, 0.07);
+      --text:        #eeeeff;
+      --muted:       #7a82a8;
+      --accent:      #7c6cf0;
+      --accent-soft: rgba(124, 108, 240, 0.18);
+      --accent-glow: rgba(124, 108, 240, 0.28);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(12, 13, 26, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    /* TODO once live: swap this comment for App Store / Google Play nav buttons, e.g.
+    <div class="nav-stores">
+      <a href="https://apps.apple.com/app/idXXXXXXXXX" class="nav-btn nav-btn-primary" target="_blank" rel="noopener">App Store</a>
+      <a href="https://play.google.com/store/apps/details?id=co.bricksandchips.junctionnine" class="nav-btn nav-btn-ghost" target="_blank" rel="noopener">Google Play</a>
+    </div>
+    */
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 5.5rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .coming-soon {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 100px;
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 420px;
+      margin: 0 auto 2.75rem;
+      text-wrap: balance;
+    }
+
+    /* ── BENEFITS ── */
+    .benefits {
+      max-width: 960px;
+      margin: 4.5rem auto 0;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .benefit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem 1.5rem 1.75rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .benefit-card:hover { border-color: rgba(124, 108, 240, 0.4); }
+
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 1.1rem;
+      color: var(--accent);
+    }
+
+    .benefit-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.55rem;
+      letter-spacing: -0.01em;
+    }
+
+    .benefit-card p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 540px) {
+      .hero {
+        padding-top: 3rem;
+        padding-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 5rem;
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-copy {
+      color: rgba(122, 130, 168, 0.5);
+      font-size: 0.75rem;
+      margin-top: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Junction Nine</a>
+  <!-- TODO once live: add App Store / Google Play nav buttons here, matching zencubed.html -->
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="coming-soon">Coming soon to iOS and Android</span>
+  <h1>A puzzle backed<br>by math.</h1>
+  <p>The shortest solution is proven. Can you find it?</p>
+  <!-- TODO once live: add App Store / Google Play download badges here, matching zencubed.html -->
+  <!-- TODO once available: add gameplay preview video/screenshot here, matching zencubed.html -->
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <p class="section-label">How it Works</p>
+  <div class="benefits-grid">
+
+    <div class="benefit-card">
+      <svg class="benefit-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="10" y="10" width="24" height="24" rx="3"/>
+        <line x1="18" y1="10" x2="18" y2="34"/>
+        <line x1="26" y1="10" x2="26" y2="34"/>
+        <line x1="10" y1="18" x2="34" y2="18"/>
+        <line x1="10" y1="26" x2="34" y2="26"/>
+        <path d="M30 6a18 18 0 0 1 6 14" stroke-dasharray="3 2"/>
+        <polyline points="34,18 36,20 38,16"/>
+      </svg>
+      <h3>Spin the grid</h3>
+      <p>Spin any rectangular section of the 3×3 board 180°.</p>
+    </div>
+
+    <div class="benefit-card">
+      <svg class="benefit-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="22" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="22" cy="12" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="32" cy="22" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="22" cy="32" r="3" fill="currentColor" stroke="none"/>
+        <circle cx="22" cy="22" r="3" fill="currentColor" stroke="none"/>
+        <line x1="15" y1="22" x2="19" y2="22"/>
+        <line x1="25" y1="22" x2="29" y2="22"/>
+        <line x1="22" y1="15" x2="22" y2="19"/>
+        <line x1="22" y1="25" x2="22" y2="29"/>
+      </svg>
+      <h3>Make the connections</h3>
+      <p>Rearrange the board until every line joins up. Fix one connection, and you may disrupt another.</p>
+    </div>
+
+    <div class="benefit-card">
+      <svg class="benefit-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="8,32 16,20 24,26 36,12"/>
+        <circle cx="36" cy="12" r="3"/>
+        <line x1="8" y1="36" x2="36" y2="36"/>
+        <polyline points="30,18 36,12 36,20"/>
+      </svg>
+      <h3>Match the minimum</h3>
+      <p>Play and play again until you find the fewest spins.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="https://bricksandchips.co">Bricks and Chips</a>
+    <a href="https://bricksandchips.co/legal/privacy-policy.html">Privacy Policy</a>
+    <a href="https://bricksandchips.co/legal/terms-of-use.html">Terms of Use</a>
+    <a href="mailto:hello@bricksandchips.co">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 Bricks and Chips, LLC</p>
+</footer>
+
+</body>
+</html>
