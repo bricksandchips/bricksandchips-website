@@ -11,6 +11,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Junction Nine">
   <meta name="twitter:description" content="A puzzle backed by math with proven solutions.">
+  <meta property="og:image" content="https://img.youtube.com/vi/ijUrHI-TmWc/maxresdefault.jpg">
+  <meta name="twitter:image" content="https://img.youtube.com/vi/ijUrHI-TmWc/maxresdefault.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -161,15 +163,16 @@
       line-height: 1.55;
     }
 
-    /* ── SCREENSHOT ── */
-    .screenshot-section {
+    /* ── VIDEO ── */
+    .video-section {
       padding: 3rem 2rem 1rem;
       display: flex;
       justify-content: center;
     }
 
     .phone-frame {
-      width: min(300px, 82vw);
+      width: min(320px, 82vw);
+      aspect-ratio: 9 / 16;
       border-radius: 28px;
       overflow: hidden;
       border: 1.5px solid rgba(255, 255, 255, 0.1);
@@ -178,12 +181,58 @@
         0 0 60px var(--accent-glow),
         0 40px 80px rgba(0, 0, 0, 0.55);
       background: #000;
+      position: relative;
     }
 
-    .phone-frame img {
+    .phone-thumb {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: auto;
+      height: 100%;
       display: block;
+      text-decoration: none;
+    }
+
+    .phone-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn span {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .phone-thumb:hover .play-btn span,
+    .phone-thumb:active .play-btn span {
+      background: rgba(255, 255, 255, 0.28);
+      transform: scale(1.08);
+    }
+
+    .play-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      margin-left: 3px;
     }
 
     /* ── MOBILE ── */
@@ -244,10 +293,17 @@
   <!-- TODO once live: add App Store / Google Play download badges here, matching zencubed.html -->
 </section>
 
-<!-- SCREENSHOT -->
-<section class="screenshot-section">
+<!-- VIDEO -->
+<section class="video-section">
   <div class="phone-frame">
-    <img src="./assets/opening-screen.png" alt="Junction Nine opening screen">
+    <a class="phone-thumb" href="https://www.youtube.com/shorts/ijUrHI-TmWc" target="_blank" rel="noopener" aria-label="Watch Junction Nine gameplay on YouTube">
+      <img src="https://img.youtube.com/vi/ijUrHI-TmWc/maxresdefault.jpg" alt="Junction Nine gameplay preview">
+      <div class="play-btn">
+        <span>
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      </div>
+    </a>
   </div>
 </section>
 
