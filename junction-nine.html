@@ -65,12 +65,38 @@
       text-decoration: none;
     }
 
-    /* TODO once live: swap this comment for App Store / Google Play nav buttons, e.g.
-    <div class="nav-stores">
-      <a href="https://apps.apple.com/app/idXXXXXXXXX" class="nav-btn nav-btn-primary" target="_blank" rel="noopener">App Store</a>
-      <a href="https://play.google.com/store/apps/details?id=co.bricksandchips.junctionnine" class="nav-btn nav-btn-ghost" target="_blank" rel="noopener">Google Play</a>
-    </div>
-    */
+    .nav-stores {
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: opacity 0.18s;
+      white-space: nowrap;
+    }
+    .nav-btn:hover { opacity: 0.8; }
+    .nav-btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.18); color: var(--text); }
+
+    /* ── STORE BADGES ── */
+    .store-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.75rem;
+    }
+    .badge-link { display: inline-flex; align-items: center; }
+    .badge-link img { display: block; }
+    .badge-google img { height: 62px; width: auto; margin: -9px 0; }
 
     /* ── HERO ── */
     .hero {
@@ -282,15 +308,24 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Junction Nine</a>
-  <!-- TODO once live: add App Store / Google Play nav buttons here, matching zencubed.html -->
+  <div class="nav-stores">
+    <a href="https://play.google.com/store/apps/details?id=co.bricksandchips.junctionnine" class="nav-btn nav-btn-ghost" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M1.26.36A.9.9 0 0 0 1 1v12a.9.9 0 0 0 .26.64l.05.04 6.73-6.73v-.16L1.31.32l-.05.04ZM10.34 9.17 8.04 6.87v-.16l2.3-2.3.05.03 2.73 1.55c.78.44.78 1.17 0 1.61l-2.73 1.55-.05.02ZM1.31 13.68l9.03-5.13-2.3-2.3-6.73 6.43ZM1.31.32l6.73 6.43-2.3 2.3L1.31.32Z"/></svg>
+      Google Play
+    </a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <span class="coming-soon">Coming soon to iOS and Android</span>
+  <span class="coming-soon">Coming soon to iOS</span>
   <h1>Find the minimum.</h1>
   <p>A puzzle backed by math with proven solutions.</p>
-  <!-- TODO once live: add App Store / Google Play download badges here, matching zencubed.html -->
+  <div class="store-badges">
+    <a href="https://play.google.com/store/apps/details?id=co.bricksandchips.junctionnine" class="badge-link badge-google" target="_blank" rel="noopener">
+      <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+    </a>
+  </div>
 </section>
 
 <!-- VIDEO -->
