@@ -93,12 +93,24 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2.75rem;
+      margin-bottom: 1rem;
     }
     .badge-link { display: inline-flex; align-items: center; }
     .badge-link img { display: block; }
     .badge-apple img { height: 44px; width: auto; }
     .badge-google img { height: 62px; width: auto; margin: -9px 0; }
+
+    .launch-badge {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.75rem;
+    }
+    .launch-badge img {
+      display: block;
+      width: 220px;
+      height: 56px;
+      max-width: 100%;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -325,6 +337,11 @@
     </a>
     <a href="https://play.google.com/store/apps/details?id=co.bricksandchips.junctionnine" class="badge-link badge-google" target="_blank" rel="noopener">
       <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+    </a>
+  </div>
+  <div class="launch-badge">
+    <a href="https://launchnest.io/p/junction-nine" target="_blank" rel="noopener">
+      <img src="https://launchnest.io/badge/junction-nine.svg?variant=listed" alt="Junction Nine on LaunchNest" width="220" height="56">
     </a>
   </div>
 </section>
