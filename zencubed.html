@@ -87,6 +87,19 @@
     .nav-btn-primary { background: var(--accent); color: #fff; }
     .nav-btn-ghost   { background: transparent; border: 1px solid rgba(255,255,255,0.18); color: var(--text); }
 
+    .launch-nav-badge {
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.72;
+      transition: opacity 0.18s;
+    }
+    .launch-nav-badge:hover { opacity: 1; }
+    .launch-nav-badge img {
+      display: block;
+      width: auto;
+      height: 32px;
+    }
+
     /* ── HERO ── */
     .hero {
       max-width: 700px;
@@ -312,6 +325,9 @@
     <a href="https://play.google.com/store/apps/details?id=co.bricksandchips.zencubed" class="nav-btn nav-btn-ghost" target="_blank" rel="noopener">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M1.26.36A.9.9 0 0 0 1 1v12a.9.9 0 0 0 .26.64l.05.04 6.73-6.73v-.16L1.31.32l-.05.04ZM10.34 9.17 8.04 6.87v-.16l2.3-2.3.05.03 2.73 1.55c.78.44.78 1.17 0 1.61l-2.73 1.55-.05.02ZM1.31 13.68l9.03-5.13-2.3-2.3-6.73 6.43ZM1.31.32l6.73 6.43-2.3 2.3L1.31.32Z"/></svg>
       Google Play
+    </a>
+    <a href="https://launchnest.io/p/zencubed-3d-block-puzzle" class="launch-nav-badge" target="_blank" rel="noopener">
+      <img src="https://launchnest.io/badge/zencubed-3d-block-puzzle.svg?variant=listed" alt="ZenCubed: 3D Block Puzzle on LaunchNest" width="220" height="56">
     </a>
   </div>
 </nav>
