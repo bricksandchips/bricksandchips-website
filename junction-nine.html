@@ -103,14 +103,23 @@
     .launch-nav-badge {
       display: inline-flex;
       align-items: center;
+      gap: 0.45rem;
       opacity: 0.72;
-      transition: opacity 0.18s;
+      cursor: default;
+      user-select: none;
     }
-    .launch-nav-badge:hover { opacity: 1; }
     .launch-nav-badge img {
       display: block;
       width: auto;
       height: 32px;
+    }
+    .launch-nav-status {
+      color: rgba(255,255,255,0.48);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     /* ── HERO ── */
@@ -325,9 +334,10 @@
       <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M1.26.36A.9.9 0 0 0 1 1v12a.9.9 0 0 0 .26.64l.05.04 6.73-6.73v-.16L1.31.32l-.05.04ZM10.34 9.17 8.04 6.87v-.16l2.3-2.3.05.03 2.73 1.55c.78.44.78 1.17 0 1.61l-2.73 1.55-.05.02ZM1.31 13.68l9.03-5.13-2.3-2.3-6.73 6.43ZM1.31.32l6.73 6.43-2.3 2.3L1.31.32Z"/></svg>
       Google Play
     </a>
-    <a href="https://launchnest.io/p/junction-nine" class="launch-nav-badge" target="_blank" rel="noopener">
-      <img src="https://launchnest.io/badge/junction-nine.svg?variant=listed" alt="Junction Nine on LaunchNest" width="220" height="56">
-    </a>
+    <span class="launch-nav-badge" role="status" aria-label="LaunchNest listing launching soon">
+      <img src="https://launchnest.io/badge/junction-nine.svg?variant=listed" alt="Junction Nine on LaunchNest — launching soon" width="220" height="56">
+      <span class="launch-nav-status">Launching soon</span>
+    </span>
   </div>
 </nav>
 
