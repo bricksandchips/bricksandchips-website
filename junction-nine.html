@@ -102,11 +102,22 @@
 
     .launch-badge-block {
       display: flex;
+      justify-content: center;
+      margin: 2.75rem auto 3.5rem;
+      text-align: center;
+    }
+    .launch-badge-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .launch-badge-item {
+      display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.45rem;
-      margin: 2.75rem auto 3.5rem;
-      text-align: center;
     }
     .launch-badge-link {
       display: inline-flex;
@@ -419,12 +430,21 @@
   </div>
 </section>
 
-<!-- LAUNCHNEST -->
-<div class="launch-badge-block" aria-label="LaunchNest listing">
-  <a href="https://launchnest.io/p/junction-nine" class="launch-badge-link" target="_blank" rel="noopener">
-    <img src="https://launchnest.io/badge/junction-nine.svg?variant=listed" alt="Junction Nine on LaunchNest" width="220" height="56">
-  </a>
-  <p class="launch-badge-status">Launching soon</p>
+<!-- LAUNCH BADGES -->
+<div class="launch-badge-block" aria-label="Junction Nine launch listings">
+  <div class="launch-badge-row">
+    <div class="launch-badge-item">
+      <a href="https://launchnest.io/p/junction-nine" class="launch-badge-link" target="_blank" rel="noopener">
+        <img src="https://launchnest.io/badge/junction-nine.svg?variant=listed" alt="Junction Nine on LaunchNest" width="220" height="56">
+      </a>
+      <p class="launch-badge-status">Launching soon</p>
+    </div>
+    <div class="launch-badge-item">
+      <a href="https://launchstag.com/p/junction-nine" class="launch-badge-link" target="_blank" rel="noopener">
+        <img src="https://launchstag.com/badge-light.svg" alt="Featured on Launchstag" width="198" height="62">
+      </a>
+    </div>
+  </div>
 </div>
 
 <!-- FOOTER -->
